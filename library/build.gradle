@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         minSdkVersion 10
-        targetSdkVersion 19
+        targetSdkVersion 20
         versionCode 1
         versionName "1.0"
     }
@@ -24,6 +24,6 @@ android {
 
 dependencies {
     compile project(':image-crop')
-    compile 'com.android.support:support-v13:' + project.ANDROID_SUPPORT_VERSION
+    compile 'com.android.support:support-v4:' + project.ANDROID_SUPPORT_VERSION
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }

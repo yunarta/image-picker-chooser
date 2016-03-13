@@ -1,0 +1,20 @@
+def moduleName = "image-chooser"
+def moduleRoot = rootProject.projectDir
+def loadSmallApp = true
+
+def modulesFile = new File(rootProject.projectDir, "modules.json")
+if (modulesFile.exists()) {
+    def json = new groovy.json.JsonSlurper()
+    def configuration = json.parse(modulesFile)
+
+    configuration.modules.each {
+        module ->
+            if (module.name.equals(moduleName)) {
+                moduleRoot = new File(rootProject.projectDir, module.path)
+                loadSmallApp = module.smallapp == null || module.smallapp
+            }
+    }
+}
+
+include ':image-chooser'
+project(':image-chooser').projectDir = new File(moduleRoot, 'library')
